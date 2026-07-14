@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zamrud Skin Store</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #080808, #202020);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: gold;
+    text-shadow: 0 0 15px gold;
+}
+
+.card, .order-box {
+
+    background: #151515;
+    border: 1px solid #444;
+    border-radius: 18px;
+
+    padding: 20px;
+    margin: 20px auto;
+
+    width: 90%;
+    max-width: 350px;
+
+    box-shadow: 0 0 20px rgba(255,215,0,0.2);
+
+    transition: 0.3s;
+}
+
+
+.card:hover {
+
+    transform: scale(1.05);
+    border-color: gold;
+    box-shadow: 0 0 25px gold;
+
+}
+
+
+button {
+
+    background: linear-gradient(135deg,#ffd700,#b8860b);
+
+    border: none;
+    border-radius: 12px;
+
+    padding: 12px 25px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+}
+
+
+button:hover {
+
+    transform: scale(1.05);
+
+}
+
+
+.hidden {
+
+    display:none;
+
+}
+
+
+.price {
+
+    color:#ffd700;
+
+    font-weight:bold;
+
+}
+
+
+#textOrder {
+
+    background:#222;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    color:#fff;
+
+    font-size:18px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>💎 Zamrud Skin Store 💎</h1>
+
+
+<!-- SUARA -->
+
+<audio id="dirt"
+src="https://www.myinstants.com/media/sounds/minecraft-dirt.mp3">
+</audio>
+
+
+<audio id="stone"
+src="https://www.myinstants.com/media/sounds/minecraft-stone.mp3">
+</audio>
+
+
+<audio id="firework"
+src="https://www.myinstants.com/media/sounds/minecraft-firework.mp3">
+</audio>
+
+
+
+<!-- MENU UTAMA -->
+
+
+<div id="menu">
+
+
+<div class="card">
+
+<h2>🟫 Skin Common</h2>
+
+<p class="price">Harga: 3K</p>
+
+<button onclick="pilih('common')">
+Pilih
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>🪨 Skin Rare</h2>
+
+<p class="price">Harga: 8K - 10K</p>
+
+<button onclick="pilih('rare')">
+Pilih
+</button>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h2>🔥 Skin Cool</h2>
+
+<p class="price">Harga: 11K - 23K</p>
+
+<button onclick="pilih('cool')">
+Pilih
+</button>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- HALAMAN ORDER -->
+
+
+<div id="order" class="hidden">
+
+
+<h2>🛒 Order Skin</h2>
+
+
+<div class="order-box">
+
+
+<p>
+Salin pesan ini lalu kirim ke admin:
+</p>
+
+
+<p id="textOrder"></p>
+
+
+
+<button onclick="copyText()">
+📋 Salin Teks
+</button>
+
+
+
+<br>
+
+
+<button onclick="tiktok()">
+🎵 Hubungi Admin TikTok
+</button>
+
+
+
+<br>
+
+
+<button onclick="kembali()">
+⬅ Kembali
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+let teks = "";
+
+
+
+function pilih(type){
+
+
+
+if(type=="common"){
+
+document.getElementById("dirt").play();
+
+teks="min mau skin common";
+
+}
+
+
+
+else if(type=="rare"){
+
+
+document.getElementById("stone").play();
+
+
+teks="min mau skin rare";
+
+
+}
+
+
+
+else if(type=="cool"){
+
+
+document.getElementById("firework").play();
+
+
+teks="min mau skin cool";
+
+
+}
+
+
+
+
+document.getElementById("textOrder").innerText=teks;
+
+
+
+setTimeout(()=>{
+
+
+document.getElementById("menu").style.display="none";
+
+document.getElementById("order").style.display="block";
+
+
+},300);
+
+
+
+}
+
+
+
+
+
+function copyText(){
+
+
+navigator.clipboard.writeText(teks)
+
+.then(()=>{
+
+alert("✅ Teks berhasil disalin!");
+
+})
+
+
+.catch(()=>{
+
+
+let area=document.createElement("textarea");
+
+area.value=teks;
+
+document.body.appendChild(area);
+
+area.select();
+
+document.execCommand("copy");
+
+area.remove();
+
+
+alert("✅ Teks berhasil disalin!");
+
+});
+
+
+}
+
+
+
+
+
+function tiktok(){
+
+
+window.open(
+
+"https://www.tiktok.com/@zamrud_009",
+
+"_blank"
+
+);
+
+
+}
+
+
+
+
+function kembali(){
+
+
+document.getElementById("menu").style.display="block";
+
+
+document.getElementById("order").style.display="none";
+
+
+}
+
+
+
+</script>
+
+
+</body>
+</html>
